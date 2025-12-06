@@ -58,4 +58,5 @@ El *pipeline* sigue esta secuencia controlada por los *triggers* de Azure DevOps
     Comando local para eliminar los recursos desplegados por el *bundle* en el Workspace:
     ```bash
     databricks bundle destroy
+    en el caso que existan diferentes validadores en visual studio --profile jhoropeza
     ```
