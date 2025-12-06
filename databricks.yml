@@ -1,0 +1,27 @@
+#yaml-language-server: $schema=bundle_config_schema.json
+
+bundle:
+  name: baby-names
+
+resources:
+  jobs:
+    dab_pipeline:
+      name: dab_pipeline
+      tasks:
+        - task_key: retrieve-baby-names
+          notebook_task:
+            notebook_path: ./notebooks/Retrieve name data.ipynb
+            source: WORKSPACE
+        - task_key: filter-baby-names
+          depends_on:
+            - task_key: retrieve-baby-names
+          notebook_task:
+            notebook_path: ./notebooks/Filter name data.ipynb
+            source: WORKSPACE
+      queue:
+        enabled: true
+      performance_target: PERFORMANCE_OPTIMIZED
+targets:
+  development:
+    workspace:
+      host: https://dbc-77b2401c-4344.cloud.databricks.com/
